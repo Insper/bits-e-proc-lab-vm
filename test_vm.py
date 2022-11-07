@@ -24,30 +24,6 @@ def test_1b_calc():
     tst = {256: (14+2)-(123-1)}
     assert vm_test("1b-calc.vm", ram, tst)
 
-def test_1c_div_zero():
-    ram = init_ram()
-    a = 0; b =10
-    ram[TEMP[0]] = a
-    ram[TEMP[1]] = b
-    tst = {SP: STACK, TEMP[3]: a/b}
-    assert vm_test("1c-div.vm", ram, tst)
-
-def test_1c_div_noRest():
-    ram = init_ram()
-    a = 15; b =5
-    ram[TEMP[0]] = a
-    ram[TEMP[1]] = b
-    tst = {SP: STACK, TEMP[3]: a/b}
-    assert vm_test("1c-div.vm", ram, tst)
-
-def test_1c_div_rest():
-    ram = init_ram()
-    a = 15; b =7
-    ram[TEMP[0]] = a
-    ram[TEMP[1]] = b
-    tst = {SP: STACK, TEMP[3]: a//b}
-    assert vm_test("1c-div.vm", ram, tst)
-
 def test_1c_loop():
     ram = init_ram()
     cnt = 0
@@ -56,6 +32,30 @@ def test_1c_loop():
 
     tst = {SP: STACK, TEMP[3]: cnt}
     assert vm_test("1c-loop.vm", ram, tst)
+
+def test_1d_div_zero():
+    ram = init_ram()
+    a = 0; b =10
+    ram[TEMP[0]] = a
+    ram[TEMP[1]] = b
+    tst = {SP: STACK, TEMP[3]: a/b}
+    assert vm_test("1c-div.vm", ram, tst)
+
+def test_1d_div_noRest():
+    ram = init_ram()
+    a = 15; b =5
+    ram[TEMP[0]] = a
+    ram[TEMP[1]] = b
+    tst = {SP: STACK, TEMP[3]: a/b}
+    assert vm_test("1c-div.vm", ram, tst)
+
+def test_1d_div_rest():
+    ram = init_ram()
+    a = 15; b =7
+    ram[TEMP[0]] = a
+    ram[TEMP[1]] = b
+    tst = {SP: STACK, TEMP[3]: a//b}
+    assert vm_test("1c-div.vm", ram, tst)
 
 def test_2a_calculadora():
     ram = init_ram()
@@ -70,3 +70,21 @@ def test_2b_calculadora():
     val = 15//5
     tst = {SP: STACK, TEMP[1]: val}
     assert vm_test("2b-calculadora", ram, tst, 50000)
+
+def test_2c_calculadora():
+    ram = init_ram()
+    x = 2
+    y = 1
+    ram[TEMP[0]] =x
+    ram[TEMP[1]] =y
+    tst = {SP: STACK, TEMP[2]: x**y}
+    assert vm_test("2c-calculadora", ram, tst, 50000)
+
+def test_2c_calculadora_zero():
+    ram = init_ram()
+    x = 5
+    y = 0
+    ram[TEMP[0]] =x
+    ram[TEMP[1]] =y
+    tst = {SP: STACK, TEMP[2]: x**y}
+    assert vm_test("2c-calculadora", ram, tst, 50000)
