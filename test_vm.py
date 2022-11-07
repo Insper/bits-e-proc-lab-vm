@@ -39,7 +39,7 @@ def test_1d_div_zero():
     ram[TEMP[0]] = a
     ram[TEMP[1]] = b
     tst = {SP: STACK, TEMP[3]: a/b}
-    assert vm_test("1c-div.vm", ram, tst)
+    assert vm_test("1d-div.vm", ram, tst)
 
 def test_1d_div_noRest():
     ram = init_ram()
@@ -47,7 +47,7 @@ def test_1d_div_noRest():
     ram[TEMP[0]] = a
     ram[TEMP[1]] = b
     tst = {SP: STACK, TEMP[3]: a/b}
-    assert vm_test("1c-div.vm", ram, tst)
+    assert vm_test("1d-div.vm", ram, tst)
 
 def test_1d_div_rest():
     ram = init_ram()
@@ -55,7 +55,7 @@ def test_1d_div_rest():
     ram[TEMP[0]] = a
     ram[TEMP[1]] = b
     tst = {SP: STACK, TEMP[3]: a//b}
-    assert vm_test("1c-div.vm", ram, tst)
+    assert vm_test("1d-div.vm", ram, tst)
 
 def test_2a_calculadora():
     ram = init_ram()
